@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CONTACT</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="contact.css">
+  </head>
+<body>
+  <div class="container contact-form">
+  <form name="google-sheet">
+  <h1>Contact Me</h1>
+  <hr>
+  <div class="row">
+       <div class="col-md-6"style="text-align: center;">
+        <br>
+       <img src="img/jane.jpg">
+       <br><br>
+        <p>NURJANNAH,S.PD.I</p>
+        <p>SMA NEGERI 4 PPU</p>
+        <p>Email: nurjannah150884@gmail.com</p>
+        <p>www.JNC-Edukasi.my.id</p>
+       </div>
+       <div class="col-md-6">
+         <div class="form-group">
+          <label>Nama</label>
+          <input type="text" id="Nama" NAME="Nama" class="form-control">
+         </div>
+
+         <div class="form-group">
+          <label>Email</label>
+          <input type="text" id="Email" name="Email" class="form-control">
+         </div>
+          <div class="form-group">
+          <label>Nomor Telepon</label>
+          <input type="text" id="Telepon" name="Telepon" class="form-control">
+         </div>
+
+         <div class="form-group">
+          <label>Pesan</label>
+          <textarea  id="Pesan" name="Pesan" class="form-control" rows="5"></textarea>
+         </div>
+
+         <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">SEND</button>
+           <div id="form_alerts"></div>
+         </div>
+       </div>
+    </div>
+  </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyzi4crz2Vv4hWcIDR6cjWFsrLJ3HlJkC16l5z4LxtP-V534NLK3rf12n4orq747SzEoQ/exec'
+        const form = document.forms['google-sheet']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>Pesan anda berhasil terkirim!</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Pesan gagal terkirim!</div>"))
+            form.reset();
+        })
+    </script>
+</body>
+</html>

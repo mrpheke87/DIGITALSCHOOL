@@ -1,0 +1,12 @@
+$(document).ready(function(){
+	$("#btn").click(1000,function(){
+		$("#form-con").animate({
+			"top":"-480px"
+		},1000);
+		$("#close-btn").click(function(){
+			$("#form-con").animate({
+			"top":"-1300px"
+		},1000);
+		});
+	});
+});

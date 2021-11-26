@@ -1,0 +1,156 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  max-width: 1600px;
+  margin: auto;
+  height: 500px;
+  background: white;
+}
+
+nav{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 225px;
+  background: #000;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  display: block;
+}
+span.active,span:hover{
+  color: #b93632;
+  background-color:#2e0010;
+}
+
+nav .top{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #02002e;
+}
+
+nav .top img{
+  width: 90px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin: 10px;
+}
+
+nav .top h1{
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+nav .top span.line{
+  display: block;
+  width: 205px;
+  height: 1px;
+  background: white;
+}
+
+nav .bot .nav-links a{
+  display: block;
+  padding: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+}
+
+nav a span{
+  margin-left: 25px;
+}
+
+input{
+  position: absolute;
+  margin-left: 22.5px;
+  margin-top: 22px;
+  transform: scale(2.1);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.navbar{
+  max-width: 100%;
+  min-height: 60px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  background: #02002e;
+  margin-left: 214px;
+}
+
+.navbar .left .hamburger{
+  padding: 10px;
+}
+
+.navbar .left .hamburger span{
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 6.5px;
+}
+
+.navbar .right h1{
+  color: white;
+  padding: 10px;
+}
+
+input{
+  margin-left: 237px;
+}
+
+input:checked ~ nav{
+  display: none;
+}
+
+input:checked ~ .navbar{
+  margin-left: 0px;
+}
+
+input:checked{
+  margin-left: 22.5px;
+}
+
+@media(max-width: 900px){
+  body{
+    overflow-y: scroll;
+  }
+
+  nav{
+    display: none;
+    width: 210px;
+  }
+
+  nav .top span.line{
+    width: 191px;
+  }
+
+  .navbar{
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  input{
+    opacity: 0;
+    margin-left: 22.5px;
+  }
+
+  input:checked{
+    margin-left: 222px;
+  }
+
+  input:checked ~ nav{
+    display: block;
+  }
+
+  input:checked ~ .navbar{
+    margin-left: 200px;
+  }
+}

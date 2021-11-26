@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JURNAL</title>
+	<link rel="stylesheet" href="assets/css/jurnal.css">
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="img"style="text-align: center;">
+  <img src="assets/img/logo.png">
+  <p>SMA NEGERI 4 PPU</p>
+</div>
+    <div class="title">
+      JURNAL GURU
+    </div>
+      <form name="google-sheet">
+    <div class="form">
+      <div class="title"style="color: #fff;font-size: 15px;background-color: navy;">
+      <p>Identitas Laporan</p>
+    </div>
+       <div class="inputfield">
+          <label>Hari</label>
+          <select type="text" id="Hari" name="Hari" class="input">
+            <option>Pilih hari</option>
+            <option>Senin</option>
+            <option>Selasa</option>
+            <option>Rabu</option>
+            <option>Kamis</option>
+            <option>Jum'at</option>
+          </select>
+          <label>Tanggal</label>
+          <input type="date" id="Tanggal" name="Tanggal" class="input">
+          <label>Kelas</label>
+          <select type="text" id="Kelas" name="Kelas" class="input">
+            <option>Pilih kelas</option>
+            <option>X IPA 1</option>
+            <option>X IPA 2</option>
+            <option>X IPS 1</option>
+            <option>X IPS 2</option>
+            <option>X IPS 3</option>
+          </select>
+       </div>  
+
+      <div class="inputfield">
+          <label>Nama Guru</label>
+          <input type="text" id="Nama_guru" name="Nama_guru" class="input" required>
+       </div> 
+        <div class="inputfield">
+          <label>Mata Pelajaran</label>
+          <select type="text" id="Mata_pelajaran" name="Mata_pelajaran" class="input">
+            <option>Pilih mata pelajaran</option>
+            <option>PKn</option>
+          </select>
+       </div> 
+        <div class="inputfield">
+          <label>Tema</label>
+          <input type="text" id="Tema" name="Tema" class="input" required>
+       </div> 
+      <div class="inputfield">
+          <label>Kompetensi Dasar</label>
+           <textarea class="textarea" id="Kompetensi_dasar" name="Kompetensi_dasar"></textarea>
+       </div> 
+      <div class="inputfield">
+          <label>Pertemuan</label>
+          <input type="number" id="Pertemuan" name="Pertemuan" class="input" required>
+       </div> 
+      <div class="inputfield">
+          <label>Materi Pokok</label>
+          <textarea class="textarea" id="Materi" name="Materi"></textarea>
+       </div> 
+      <div class="inputfield">
+          <label>Kegiatan Pembelajaran</label>
+           <textarea class="textarea" id="Kegiatan_belajar" name="Kegiatan_belajar"></textarea>
+       </div>
+       <div class="inputfield">
+          <label>Penilaian</label>
+           <input type="text" id="Penilaian" name="Penilaian" class="input">
+       </div> 
+       <div class="title"style="color: #fff;font-size: 15px;background-color: navy;">
+      <p>KEHADIRAN SISWA</p>
+    </div>
+       <div class="inputfield">
+           <label>Hadir</label>
+           <input type="number" id="Hadir" name="Hadir" class="input">
+            <label>Sakit</label>
+           <input type="number" id="Sakit" name="Sakit" class="input">
+            <label>Ijin</label>
+           <input type="number" id="Ijin" name="Ijin" class="input">
+           <label>Alfa</label>
+           <input type="number" id="Alfa" name="Alfa" class="input">
+
+       </div> 
+      <div class="title"style="color: #fff;font-size: 15px;background-color: navy;">
+      <p>Catatan</p>
+    </div>
+        <div class="inputfield">
+          <label>Catatan</label>
+           <textarea class="textarea" id="Catatan" name="Catatan"></textarea>
+       </div>
+       <div class="title"style="color: #fff;font-size: 15px;background-color: navy;">
+      <p>Kesimpulan</p>
+    </div>
+        <div class="inputfield">
+          <label>Kesimpulan</label>
+           <textarea class="textarea" id="Kesimpulan" name="Kesimpulan"></textarea>
+       </div>
+      <div class="inputfield">
+        <input type="submit" value="SUBMIT" class="btn">
+        <div id="form_alerts"></div>
+      </div>
+    </div>
+  </div>	
+</form>
+
+	<script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxbYVFMfYHGfp3LBLD9VbTDqLuKPrQ2C8mHnTzZFAlQ7AtHB4mW5aUDK6vvGpNcxw9p/exec'
+        const form = document.forms['google-sheet']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>Data berhasil dikirim.</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Data gagal terkirim!.</div>"))
+            form.reset();
+        })
+    </script>
+
+</body>
+</html>
